@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: beige;
+font-family: Arial, Helvetica, sans-serif;">
+    <form method="POST" style="width: 100%;">
+        {% csrf_token %}
+        <h1 style="text-align: center;font-style: italic;">TO-DO LIST</h1><br>
+        <label>Task:</label><br>
+        <input type="text" placeholder="Enter the task" name="task" style="width: 100%;"><br><br>
+        <label>Deadline:</label><br>
+        <input type="date" placeholder="Enter the deadline" name="date" style="width: 100%;"><br><br>
+        <button>Add Task</button>
+    </form>
+    <div class="itemm" style="margin: 20px auto;
+    border:3px solid black;
+    width:500px;background-color: burlywood;text-align: justify;
+    padding: 20px;margin-bottom:20px; padding-bottom:15px;margin-bottom:20px; padding-bottom:15px;">
+        <ol>
+            {% for i in item %}
+            <li>{{i.task}}</li>
+            <p>{{i.deadline}}</p>
+            <button style="background-color:lightgreen;color: white;padding: 10px;cursor: pointer;"><a
+                    href="{% url 'update' i.id %}">Update</a></button>
+            <button style="background-color:lightgreen;color: white;padding: 10px;cursor: pointer;"><a
+                    href="{% url 'delete' i.id %}">Delete</a></button>
+            {% endfor %}
+        </ol>
+    </div>
+</body>
+
+</html>
