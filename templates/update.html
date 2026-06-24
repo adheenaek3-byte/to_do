@@ -1,18 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    body{background-color:beige ;}
+    .update{
+        width: 50%;
+    margin: 50px auto;
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px gray;
+    }
+    button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 25px;
+    background-color: rgb(136, 67, 112);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: fit-content;
+}
+</style>
+
 <body>
-    <form method="POST">
-        {% csrf_token %}
-        <label>Task:</label><br>
-        <input type="text" placeholder="Enter your task:" name='task' value="{{a.task}}"><br><br>
-        <label>Deadline:</label><br>
-        <input type="date" placeholder="Enter due date:"name='date' value="{{a.date}}"><br><br>
-        <button>Submit</button>
-    </form>
+    <div class="update">
+        <form method="POST">
+            {% csrf_token %}
+            <label>Task:</label><br>
+            <input type="text" placeholder="Enter your task:" name='task' value="{{a.task}}"><br><br>
+            <label>Deadline:</label><br>
+            <input type="date" placeholder="Enter due date:" name='date' value="{{a.date}}"><br><br>
+            <button>Submit</button>
+        </form>
+    </div>
 </body>
+
 </html>

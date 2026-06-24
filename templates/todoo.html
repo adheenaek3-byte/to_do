@@ -6,30 +6,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    body {
+        background-color: beige;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
-<body style="background-color: beige;
-font-family: Arial, Helvetica, sans-serif;">
-    <form method="POST" style="width: 100%;">
+    h1 {
+        text-align: center;
+        font-style: oblique;
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(83, 47, 53);
+    }
+
+    form {
+        width: 50%;
+        margin: auto;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    button {
+        padding: 8px 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: rgb(136, 67, 112);
+        color: white;
+    }
+
+    .add-btn {
+        background-color: steelblue;
+        color: white;
+        text-align: center;
+        width: 100%;
+    }
+
+    .itemm {
+        width: 500px;
+        margin: 20px auto;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 0 5px gray;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: rgb(61, 61, 85);
+    }
+
+    .update {
+        background-color: lightgreen;
+    }
+
+    .delete {
+        background-color: lightcoral;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+    label{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+        color: rgb(61, 61, 85);
+    }
+</style>
+
+<body>
+    <form method="POST">
         {% csrf_token %}
-        <h1 style="text-align: center;font-style: italic;">TO-DO LIST</h1><br>
+        <h1>TO-DO LIST</h1><br>
         <label>Task:</label><br>
         <input type="text" placeholder="Enter the task" name="task" style="width: 100%;"><br><br>
         <label>Deadline:</label><br>
         <input type="date" placeholder="Enter the deadline" name="date" style="width: 100%;"><br><br>
-        <button>Add Task</button>
+        <button style=" background-color: rgb(136, 67, 112);
+        color: white;
+        text-align: center;
+        width: 100%; display:flex;justify-content: center; padding: 10px;">Add Task</button>
     </form>
-    <div class="itemm" style="margin: 20px auto;
-    border:3px solid black;
-    width:500px;background-color: burlywood;text-align: justify;
-    padding: 20px;margin-bottom:20px; padding-bottom:15px;margin-bottom:20px; padding-bottom:15px;">
+    <div class="itemm">
         <ol>
             {% for i in item %}
             <li>{{i.task}}</li>
             <p>{{i.deadline}}</p>
-            <button style="background-color:lightgreen;color: white;padding: 10px;cursor: pointer;"><a
-                    href="{% url 'update' i.id %}">Update</a></button>
-            <button style="background-color:lightgreen;color: white;padding: 10px;cursor: pointer;"><a
-                    href="{% url 'delete' i.id %}">Delete</a></button>
+            <button style="background-color: lightgreen;"><a href="{% url 'update' i.id %}">Update</a></button>
+            <button style="background-color: lightcoral;"><a href="{% url 'delete' i.id %}">Delete</a></button>
             {% endfor %}
         </ol>
     </div>
